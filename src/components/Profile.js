@@ -11,12 +11,14 @@ const Profile = () => {
     navigate("/login"); // redirect to login page
   };
 
-  return (
-    <div className="profile-page">
+return (
+  <div className="profile-container">
+    <div className="profile-box">
       <h2>Welcome, {user}!</h2>
-      <button onClick={handleLogout}>Logout</button>
+      <button className="logout-button" onClick={handleLogout}>Logout</button>
     </div>
-  );
+  </div>
+);
 };
 
-export default Profiler;
+export default Profile;

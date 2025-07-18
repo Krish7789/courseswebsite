@@ -1025,6 +1025,42 @@ body::before {
     color: white;
 }
 
+.profile-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 80vh; /* centers vertically */
+}
+
+.profile-box {
+  background: rgba(255, 255, 255, 0.1);
+  padding: 30px 40px;
+  border-radius: 12px;
+  box-shadow: 0 8px 32px rgba(0,0,0,0.2);
+  text-align: center;
+  backdrop-filter: blur(8px);
+}
+
+.profile-box h2 {
+  color: white;
+  font-size: 28px;
+  margin-bottom: 20px;
+}
+
+.logout-button {
+  padding: 10px 20px;
+  font-size: 16px;
+  background-color: #ff4d4d;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.logout-button:hover {
+  background-color: #e60000;
+}
 
 
 

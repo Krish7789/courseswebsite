@@ -9,6 +9,7 @@ import Spinner from "./components/Spinner";
 import CourseDetail from "./components/CourseDetail";
 import CartPage from "./components/CartPage"; // import CartPage for /cart route
 import { Routes, Route } from "react-router-dom"; // for routing
+import React from "react";
 
 // import new components
 import Login from "./components/Login";
