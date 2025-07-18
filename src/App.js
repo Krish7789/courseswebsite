@@ -8,82 +8,95 @@ import { toast } from "react-toastify";
 import Spinner from "./components/Spinner";
 import CourseDetail from "./components/CourseDetail";
 import CartPage from "./components/CartPage"; // import CartPage for /cart route
-import { Routes, Route } from "react-router-dom"; // import routing components
+import { Routes, Route } from "react-router-dom"; // for routing
+
+// import new components
+import Login from "./components/Login";
+import Profile from "./components/Profile";
 
 const App = () => {
-  const [courses, setCourses] = useState(null); // stores courses from API
-  const [loading, setLoading] = useState(true); // loading state
-  const [category, setCategory] = useState(filterData[0].title); // initial category value ("All")
+    const [courses, setCourses] = useState(null); // to store courses
+    const [loading, setLoading] = useState(true); // loading state
+    const [category, setCategory] = useState(filterData[0].title); // initially 'All'
 
-  // fetch data from API
-  async function fetchData() {
-    setLoading(true);
-    try {
-      let res = await fetch(apiUrl);
-      let output = await res.json(); // convert API data into JSON
-      setCourses(output.data); // save API data into state
-    } catch (error) {
-      toast.error("Something went wrong");
+    // fetch courses from API
+    async function fetchData() {
+        setLoading(true);
+        try {
+            let res = await fetch(apiUrl);
+            let output = await res.json();
+            setCourses(output.data);
+        } catch (error) {
+            toast.error("Something went wrong");
+        }
+        setLoading(false);
     }
-    setLoading(false);
-  }
 
-  // fetch data when app loads
-  useEffect(() => {
-    fetchData();
-  }, []);
+    useEffect(() => {
+        fetchData();
+    }, []);
 
-  return (
-    <div className="maxdiv">
-      {/* Navbar */}
-      <div className="navapp">
-        <Navbar />
-      </div>
+    return (
+    
+            <div className="maxdiv">
+                {/* Navbar */}
+                <div className="navapp">
+                    <Navbar />
+                </div>
 
-      {/* React Router Routes */}
-      <Routes>
-        {/* Home route */}
-        <Route
-          path="/"
-          element={
-            <>
-              {/* Filter component with props */}
-              <div className="filter">
-                <Filter
-                  filterData={filterData} // using props to pass filter buttons data
-                  category={category}
-                  setCategory={setCategory} // for updating selected category
-                />
-              </div>
+                {/* Routes */}
+                <Routes>
+                    {/* Home */}
+                    <Route
+                        path="/"
+                        element={
+                            <>
+                                <div className="filter">
+                                    <Filter
+                                        filterData={filterData}
+                                        category={category}
+                                        setCategory={setCategory}
+                                    />
+                                </div>
 
-              {/* Main content */}
-              <div>
-                {
-                  loading ? (
-                    <Spinner /> // show spinner while loading
-                  ) : (
-                    <Cards courses={courses} category={category} /> // show cards after loading
-                  )
-                }
-              </div>
-            </>
-          }
-        />
+                                <div>
+                                    {loading ? (
+                                        <Spinner />
+                                    ) : (
+                                        <Cards courses={courses} category={category} />
+                                    )}
+                                </div>
+                            </>
+                        }
+                    />
 
-        {/* Course Detail Page */}
-        <Route
-          path="/course/:id"
-          element={<CourseDetail courses={courses} />}
-        />
+                    {/* Course Detail Page */}
+                    <Route
+                        path="/course/:id"
+                        element={<CourseDetail courses={courses} />}
+                    />
 
-        {/* Cart Page */}
-        <Route
-          path="/cart"
-          element={<CartPage />}
-        />
-      </Routes>
-    </div>
-  );
+                    {/* Cart Page */}
+                    <Route
+                        path="/cart"
+                        element={<CartPage />}
+                    />
+
+                    {/* Login Page */}
+                    <Route
+                        path="/login"
+                        element={<Login />}
+                    />
+
+                    {/* Profile Page */}
+                    <Route
+                        path="/profile"
+                        element={<Profile />}
+                    />
+                </Routes>
+            </div>
+     
+    );
 };
 
 export default App;

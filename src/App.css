@@ -199,7 +199,7 @@ body::before {
   margin: 0 auto;
   padding: var(--space-lg) var(--space-xl);
   display: flex;
-  justify-content: center;
+  justify-content: space-between;
   align-items: center;
   animation: slideDown 0.8s var(--transition-elastic);
 }
@@ -816,7 +816,7 @@ body::before {
 .cart-icon {
     position: absolute;
     right: 1rem;
-    top: 50%;
+    top: 55%;
     transform: translateY(-50%);
     text-decoration: none;
 }
@@ -943,3 +943,88 @@ body::before {
     justify-content: flex-start;
     align-items: center;
 }
+
+.navbar-right {
+    display: flex;
+    align-items: center;
+    gap: 0.8rem; /* spacing between login and cart */
+}
+.login-button {
+    padding: 0.4rem 0.8rem;
+    background: rgba(255, 255, 255, 0.15);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    border-radius: 8px;
+    backdrop-filter: blur(8px);
+    color: white;
+    text-decoration: none;
+    font-weight: 500;
+    margin-right: 1rem;
+    transition: background 0.3s, transform 0.2s;
+}
+
+.login-button:hover {
+    background: rgba(255, 255, 255, 0.25);
+    transform: scale(1.05);
+}
+
+/* Login Page Styling */
+.login-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 80vh; /* fills viewport height minus navbar */
+    background: linear-gradient(135deg, #4b2aef, #a635ee);
+}
+
+.login-box {
+    background-color: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    border-radius: 15px;
+    padding: 30px;
+    width: 90%;
+    max-width: 400px;
+    text-align: center;
+    color: white;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.3);
+    display: flex;
+    flex-direction: column; /* stack vertically */
+    align-items: center;
+}
+
+.login-box h2 {
+    margin-bottom: 20px;
+    font-size: 28px;
+    font-weight: 600;
+}
+
+.login-box input {
+    width: 90%;
+    padding: 12px;
+    margin: 10px 0;
+    border-radius: 8px;
+    border: none;
+    outline: none;
+    font-size: 16px;
+}
+
+.login-box button {
+    padding: 12px 24px;
+    background-color: #ffffff;
+    color: #4b2ae0;
+    border: none;
+    border-radius: 8px;
+    font-size: 16px;
+    cursor: pointer;
+    font-weight: 600;
+    margin-top: 15px;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.login-box button:hover {
+    background-color: #4b2ae0;
+    color: white;
+}
+
+
+
+
